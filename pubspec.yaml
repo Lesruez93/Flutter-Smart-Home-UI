@@ -1,7 +1,7 @@
 name: smart_home
 version: 1.0.0+1
 publish_to: none
-description: A new Flutter project.
+description: Flutter Home UI.
 environment: 
   sdk: '>=3.3.1 <4.0.0'
 
