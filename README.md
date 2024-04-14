@@ -1,16 +1,9 @@
-# coin_buddy
+# Flutter Smart Home UI
 
-A new Flutter project.
-
+Inspired by this dribble UI https://dribbble.com/shots/23686461-Miraihome-Mobile-App
 ## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img height="600" src="https://github.com/Lesruez93/smart_home/blob/main/assets/Simulator%20Screenshot%20-%20iPhone%2014%20-%202024-04-14%20at%2018.07.48.png?raw=true">
