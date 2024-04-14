@@ -25,7 +25,9 @@ class HomeView extends GetView<HomeController> {
             ],
             centerTitle: true,
           ),
-          body: ListView());
+          body: ListView(children: const [
+
+          ],));
     });
   }
 }
