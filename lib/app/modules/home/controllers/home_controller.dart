@@ -9,6 +9,8 @@ class HomeController extends GetxController {
   final GlobalKey<RefreshIndicatorState> refreshIndicatorKey =
   GlobalKey<RefreshIndicatorState>();
 
+  final RxBool value = false.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -23,16 +25,8 @@ class HomeController extends GetxController {
   void onClose() {
     super.onClose();
   }
-  refreshOnButton() {
-    refreshIndicatorKey.currentState?.show();
-  }
-  Future<void> refreshData() async {
 
-      await Future.delayed(const Duration(seconds: 2)); // Simulating a delay
 
-  }
-
-  void increment() => count.value++;
 
 
 }
