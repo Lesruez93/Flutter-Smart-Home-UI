@@ -13,7 +13,7 @@ dependencies:
   flutter: 
     sdk: flutter
   flutter_any_logo: ^1.1.1
-  crypto_market: ^0.0.3
+  fl_chart: ^0.62.0
 
 dev_dependencies: 
   flutter_lints: 3.0.2

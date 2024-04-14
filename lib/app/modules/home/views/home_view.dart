@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:relative_scale/relative_scale.dart';
 
+import '../../../widgets/chart.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -27,10 +29,7 @@ class HomeView extends GetView<HomeController> {
                   padding: EdgeInsets.only(right: sx(20)),
                   child: const CircleAvatar(
                     backgroundColor: Colors.black,
-                    child: Text(
-                      'JD',
-                      style: TextStyle(color: Colors.white),
-                    ),
+                    backgroundImage: NetworkImage('https://avatars.githubusercontent.com/u/41008271?v=4'),
                   )),
             ],
             title: const Text(
@@ -97,13 +96,12 @@ class HomeView extends GetView<HomeController> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
-                     // crossAxisCount: 2,
+                      // crossAxisCount: 2,
                       //crossAxisSpacing: sx(10),
-                  //    mainAxisSpacing: sy(5),
+                      //    mainAxisSpacing: sy(5),
                       children: [
                         Container(
-                          width: sy(130),
-
+                          width: sx(230),
                           decoration: BoxDecoration(
                               gradient: const LinearGradient(
                                 begin: Alignment.topRight,
@@ -122,37 +120,35 @@ class HomeView extends GetView<HomeController> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Obx(
-                                      () => Switch(
-                                        activeColor: Colors.white,
-                                        value: controller.value.value,
-                                        onChanged: (value) =>
-                                            {controller.value.value = value},
-                                      ),
-                                    ),
-
-
-                                const SizedBox(height: 20,),
-                                const Text('Locked',
-
+                                  () => Switch(
+                                    activeColor: Colors.white,
+                                    value: controller.doorLocker.value,
+                                    onChanged: (value) =>
+                                        {controller.doorLocker.value = value},
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                const Text(
+                                  'Locked',
                                   style: TextStyle(
                                       fontWeight: FontWeight.w500,
                                       color: Colors.white,
-                                    fontSize: 12
-                                  ),),
-
-                               const Text('Door Locker',
-
+                                      fontSize: 12),
+                                ),
+                                const Text(
+                                  'Door Locker',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                    color: Colors.white
-                                  ),)
-
+                                      color: Colors.white),
+                                )
                               ],
                             ),
                           ),
                         ),
                         Container(
-                          width: sy(130),
+                          width: sx(230),
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(8)),
@@ -162,38 +158,82 @@ class HomeView extends GetView<HomeController> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Obx(
-                                    () => Switch(
-                                      activeColor:
-                                          const Color.fromRGBO(89, 131, 211, 1.0),
-                                      value: controller.value.value,
-                                      onChanged: (value) =>
-                                          {controller.value.value = value},
-                                    ),
+                                  () => Switch(
+                                    activeColor:
+                                        const Color.fromRGBO(89, 131, 211, 1.0),
+                                    value: controller.gateLocker.value,
+                                    onChanged: (value) =>
+                                        {controller.gateLocker.value = value},
                                   ),
-
-                                const SizedBox(height: 20,),
-                                const Text('Unlocked',
-
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                const Text(
+                                  'Unlocked',
                                   style: TextStyle(
                                       fontWeight: FontWeight.w500,
                                       color: Colors.black,
-                                      fontSize: 12
-                                  ),),
-
-                                const Text('Gate Locker',
-
+                                      fontSize: 12),
+                                ),
+                                const Text(
+                                  'Gate Locker',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.black
-                                  ),)
-                                
+                                      color: Colors.black),
+                                )
                               ],
                             ),
                           ),
                         )
                       ],
                     ),
-                  )
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                      decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                              BorderRadius.vertical(top: Radius.circular(8))),
+                      child:  ListTile(
+                        title: Text(
+                          'Energy Consumption',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        trailing: Padding(
+                            padding:  EdgeInsets.only(top: 18.0),
+                            child: Obx(() => Container(
+                              child: DropdownButton<String>(
+                                value: controller.day.value,
+                                onChanged: (String? newValue) {
+                                  controller.day.value = newValue!;
+                                },
+                                items: <String>[
+                                  'Today',
+                                  'Yesterday',
+
+                                ].map<DropdownMenuItem<String>>((String value) {
+                                  return DropdownMenuItem<String>(
+
+                                    value: value,
+                                    child: Text(
+                                      value,
+                                      style: Theme.of(context).textTheme.bodyMedium,
+                                    ),
+                                  );
+                                }).toList(),
+                              ),
+                            ))),
+                      )),
+                  SizedBox(
+                      height: 250,
+                      child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(8)),
+                          child: LineChartSample4()))
                 ]),
           ));
     });
