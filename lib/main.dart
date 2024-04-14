@@ -10,6 +10,10 @@ void main() {
       debugShowCheckedModeBanner: false,
       title: "Smart Home",
       theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          backgroundColor: Color(0xFFF0F5F4),
+        ),
+        scaffoldBackgroundColor: Color(0xFFF0F5F4),
         primaryColor: Colors.green,
         fontFamily: 'GilroyFont'
       ),
