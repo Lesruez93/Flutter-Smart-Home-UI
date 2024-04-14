@@ -93,13 +93,17 @@ class HomeView extends GetView<HomeController> {
                     ),
                   ),
                   SizedBox(
-                    height: sy(150),
-                    child: GridView.count(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: sx(10),
-                      mainAxisSpacing: sy(5),
+                    height: sy(100),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                     // crossAxisCount: 2,
+                      //crossAxisSpacing: sx(10),
+                  //    mainAxisSpacing: sy(5),
                       children: [
                         Container(
+                          width: sy(130),
+
                           decoration: BoxDecoration(
                               gradient: const LinearGradient(
                                 begin: Alignment.topRight,
@@ -117,10 +121,7 @@ class HomeView extends GetView<HomeController> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Obx(
+                                Obx(
                                       () => Switch(
                                         activeColor: Colors.white,
                                         value: controller.value.value,
@@ -128,9 +129,18 @@ class HomeView extends GetView<HomeController> {
                                             {controller.value.value = value},
                                       ),
                                     ),
-                                  ),
-                                ),
-                                const Text('Door Locker',
+
+
+                                const SizedBox(height: 20,),
+                                const Text('Locked',
+
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white,
+                                    fontSize: 12
+                                  ),),
+
+                               const Text('Door Locker',
 
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -142,6 +152,7 @@ class HomeView extends GetView<HomeController> {
                           ),
                         ),
                         Container(
+                          width: sy(130),
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(8)),
@@ -150,8 +161,7 @@ class HomeView extends GetView<HomeController> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Expanded(
-                                  child: Obx(
+                                Obx(
                                     () => Switch(
                                       activeColor:
                                           const Color.fromRGBO(89, 131, 211, 1.0),
@@ -160,13 +170,22 @@ class HomeView extends GetView<HomeController> {
                                           {controller.value.value = value},
                                     ),
                                   ),
-                                  
-                                ),
-                                const Text('Door Locker',
 
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold
-                                ),)
+                                const SizedBox(height: 20,),
+                                const Text('Unlocked',
+
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black,
+                                      fontSize: 12
+                                  ),),
+
+                                const Text('Gate Locker',
+
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black
+                                  ),)
                                 
                               ],
                             ),
